@@ -1,5 +1,5 @@
-const UserModel = require("../models/user.models");
-const UserModel = require("../models/user.models");
+const UserModel = require("../models/user.model");
+const UserModel = require("../models/user.model");
 const ObjectId = require("mongoose").Types.ObjectId;
 
 // info de tout les users
