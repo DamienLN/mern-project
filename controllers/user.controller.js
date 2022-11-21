@@ -12,12 +12,43 @@ module.exports.getAllUsers = async (req, res) => {
 // info d un seul user
 
 module.exports.userInfo = (req, res) => {
-  console.log(req.params);
-  if (!ObjectId.isValid(req.params))
+  if (!ObjectId.isValid(req.params.id))
     return res.stauts(400).send("ID unknown: " + req.params.id);
 
   UserModel.findById(req.params.id, (err, docs) => {
     if (!err) res.send(docs);
     else console.log("ID unknown" + err);
-  });
+  }).select('-password');
 };
+
+// MAJ profil user
+
+modules.exports.updateUser = async (req, res) => {
+  // verification si l id est correct
+  if (!ObjectId.isValid(req.params.id))
+    return res.status(400).send('ID unknown : ' + req.params.id)
+
+  // correct = on peut set la bio
+  try {
+    await UserModel.findOneAndUpdate(
+        {_id: req.params.id},
+        {
+          $set: {
+            bio: req.body.bio
+          }
+        },
+        {new: true, upsert:true, setDefaultsOnInsert: true},
+        (err,docs) => {
+          // toute la docs (data)
+          if (!err) return res.send(docs);
+          // erreur
+          if (err) return res.status(500).send({message: err});
+
+        }
+    )
+  } catch (err){
+    return res.status(500).json({message: err});
+  }
+}
+
+
