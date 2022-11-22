@@ -14,8 +14,8 @@ module.exports.uploadProfil = async (req, res) => {
       throw Error("invalid file");
     if (req.file.size > 500000) throw Error("max size");
   } catch (err) {
-    const errors = uploadErrors(err)
-    return res.status(201).json({errors});
+    const errors = uploadErrors(err);
+    return res.status(201).json({ errors });
   }
   // will delete last photo and update with the new one in jpg
   const fileName = req.body.name + ".jpg";
@@ -26,4 +26,18 @@ module.exports.uploadProfil = async (req, res) => {
       `${_dirname}/../client/public/uploads/profil/${fileName}`
     )
   );
+
+  try {
+    await UserModel.findByIdAndUpdate(
+      req.body.userId,
+      { $set: { picture: "./uploads/profil/" + fileName } },
+      { new: true, upsert: true, setDefaultsOnInsert: true },
+      (err, docs) => {
+        if (!err) return res.send(docs);
+        else return res.status(500).send({ message: err });
+      }
+    );
+  } catch (err) {
+    return res.status(500).send({ message: err });
+  }
 };

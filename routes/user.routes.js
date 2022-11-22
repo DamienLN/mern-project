@@ -16,6 +16,7 @@ router.get("/:id", userController.userInfo);
 router.put("/:id", userController.updateUser);
 router.delete("/:id", userController.deleteUser);
 router.patch("/follow/:id", userController.follow);
+// multer can cause bug cause its not the lastest version
 router.patch("/unfollow/:id", multer, userController.unfollow);
 
 // upload
