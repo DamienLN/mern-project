@@ -1,5 +1,5 @@
 const UserModel = require("../models/user.model");
-const UserModel = require("../models/user.model");
+
 const ObjectId = require("mongoose").Types.ObjectId;
 
 // info de tout les users
@@ -21,7 +21,7 @@ module.exports.userInfo = (req, res) => {
 };
 
 // MAJ profil user
-modules.exports.updateUser = async (req, res) => {
+module.exports.updateUser = async (req, res) => {
   // verifie id
   if (!ObjectId.isValid(req.params.id))
     return res.status(400).send("ID unknown : " + req.params.id);

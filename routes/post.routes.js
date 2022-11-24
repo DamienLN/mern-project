@@ -1,5 +1,5 @@
-const router = rquire("express").Router();
-const postController = require("../controllers/psot.controller");
+const router = require("express").Router();
+const postController = require("../controllers/post.controller");
 const multer = require("multer");
 const upload = multer();
 

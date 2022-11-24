@@ -1,4 +1,4 @@
-const jwt = requier('jsonwebtoken');
+const jwt = require('jsonwebtoken');
 const UserModel = require('../models/user.model')
 
 // test if user is connected
