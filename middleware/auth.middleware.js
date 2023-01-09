@@ -11,7 +11,7 @@ module.exports.checkUser = (req, res, next) => {
             if (err) {
                 res.locals.user = null;
                 // delete the token in 1ms
-                res.cookie('jwt', '', {maxAge: 1});
+                // res.cookie('jwt', '', {maxAge: 1});
                 next();
             } else {
                 let user = await UserModel.findById(decodedToken.id)
