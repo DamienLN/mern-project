@@ -10,7 +10,7 @@ import { getUsers } from "./actions/users.actions";
 // dev tools
 import { composeWithDevTools } from "redux-devtools-extension";
 import { getPosts } from "./actions/post.actions";
-
+// Store redux
 const store = createStore(
   rootReducer,
   composeWithDevTools(applyMiddleware(thunk))
