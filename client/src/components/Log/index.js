@@ -2,8 +2,12 @@ import React, { useState } from "react";
 import SignInForm from "./SignInForm";
 import SignUpForm from "./SignUpForm";
 
+// Props permet un affichage conditionnel sois singup / sois signin
 const Log = ( props ) => {
+
+  // Affiche la page pour s'inscrire
   const [signUpModal, setSignUpModal] = useState(props.signup);
+  // Affiche la page pour se connecter
   const [signInModal, setSignInModal] = useState(props.signin);
 
   const handleModals = (e) => {
@@ -16,10 +20,13 @@ const Log = ( props ) => {
     }
   };
 
+  // Renvoie le rendu visuel du code ci-dessus
+  // active btn pour montrer la couleur du bouton de la page active
   return (
     <div className="connection-form">
       <div className="form-container">
         <ul>
+          
           <li
             onClick={handleModals}
             id="register"
@@ -27,6 +34,7 @@ const Log = ( props ) => {
           >
             S'inscrire
           </li>
+
           <li
             onClick={handleModals}
             id="login"

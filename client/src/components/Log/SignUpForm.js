@@ -66,6 +66,8 @@ const SignUpForm = () => {
         </>
       ) : (
         <form action="" onSubmit={handleRegister} id="sign-up-form">
+
+          {/* Erreur de Pseudo */}
           <label htmlFor="pseudo">Pseudo</label>
           <br />
           <input
@@ -77,6 +79,8 @@ const SignUpForm = () => {
           />
           <div className="pseudo error"></div>
           <br />
+
+          {/* Erreur Email */}
           <label htmlFor="email">Email</label>
           <br />
           <input
@@ -85,20 +89,26 @@ const SignUpForm = () => {
             id="email"
             onChange={(e) => setEmail(e.target.value)}
             value={email}
-          />
+          />         
           <div className="email error"></div>
           <br />
+
+          {/* Erreur de Password */}
           <label htmlFor="password">Mot de passe</label>
           <br />
           <input
+          // type="password" Permet de caché ce que l'on écrit
             type="password"
             name="password"
             id="password"
+            // Contrôle des deux password ligne 105 et 118
             onChange={(e) => setPassword(e.target.value)}
             value={password}
           />
           <div className="password error"></div>
           <br />
+
+          {/* Confirmation du password */}
           <label htmlFor="password-conf">Confirmer mot de passe</label>
           <br/>
           <input
@@ -110,9 +120,12 @@ const SignUpForm = () => {
           />
           <div className="password-confirm error"></div>
           <br />
+
+          {/* J'accepte les conditions générales */}
           <input type="checkbox" id="terms" />
           <label htmlFor="terms">
             J'accepte les{" "}
+            {/* noopener et noreferrer pour des questions de sécurités */}
             <a href="/" target="_blank" rel="noopener noreferrer">
               conditions générales
             </a>

@@ -6,10 +6,13 @@ const SignInForm = () => {
   const [password, setPassword] = useState("");
 
   const handleLogin = (e) => {
+    // Permet de ne jamais recharger la page après inscription
     e.preventDefault();
+
     const emailError = document.querySelector(".email.error");
     const passwordError = document.querySelector(".password.error");
 
+    // axios permet d'envoyer des requêtes à l'api
     axios({
       method: "post",
       url: `${process.env.REACT_APP_API_URL}api/user/login`,
@@ -25,6 +28,7 @@ const SignInForm = () => {
           emailError.innerHTML = res.data.errors.email;
           passwordError.innerHTML = res.data.errors.password;
         } else {
+          // Connecté à l'aacueil
           window.location = "/";
         }
       })
@@ -34,6 +38,7 @@ const SignInForm = () => {
   };
 
   return (
+    // onSubmit va interagir quand on appuiera sur submit
     <form action="" onSubmit={handleLogin} id="sign-up-form">
       <label htmlFor="email">Email</label>
       <br />
@@ -41,6 +46,7 @@ const SignInForm = () => {
         type="text"
         name="email"
         id="email"
+        // onChange on récupère l'élément qui à changé est récupéré et stocké
         onChange={(e) => setEmail(e.target.value)}
         value={email}
       />
@@ -52,6 +58,7 @@ const SignInForm = () => {
         type="password"
         name="password"
         id="password"
+        // onChange on récupère l'élément qui à changé est récupéré et stocké
         onChange={(e) => setPassword(e.target.value)}
         value={password}
       />
