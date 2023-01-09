@@ -26,7 +26,7 @@ const App = () => {
         .catch((err) => console.log("No token"));
     };
     fetchToken();
-
+    //  uid se retrouve dans notre action ( user.actions ligne 11 ), dispatch déclenche une action
     if (uid) dispatch(getUser(uid));
     //  [] permettent que la page ne tourne pas à l'infini
   }, [uid, dispatch]);

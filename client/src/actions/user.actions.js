@@ -9,6 +9,7 @@ export const UNFOLLOW_USER = "UNFOLLOW_USER";
 export const GET_USER_ERRORS = "GET_USER_ERRORS";
 
 export const getUser = (uid) => {
+    // dispatch c'est se qu'on envoie au reducer
   return (dispatch) => {
     return axios
       .get(`${process.env.REACT_APP_API_URL}api/user/${uid}`)

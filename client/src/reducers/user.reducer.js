@@ -11,6 +11,7 @@ import {
   export default function userReducer(state = initialState, action) {
     switch (action.type) {
       case GET_USER:
+        // on incremmente ses donnée avec initiateState
         return action.payload;
       case UPLOAD_PICTURE:
         return {

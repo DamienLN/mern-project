@@ -7,7 +7,7 @@ import Logout from "./Log/Logout";
 
 const Navbar = () => {
   const uid = useContext(UidContext);
-//   Permet de mettre le nom dans la navbar
+//   Permet de mettre le nom dans la navbar et de stocker la data
   const userData = useSelector((state) => state.userReducer);
 
   return (
