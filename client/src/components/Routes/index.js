@@ -8,6 +8,7 @@ import Navbar from '../Navbar';
 const index = () => {
   return (
     <div>
+      {/* La Navbar sera sur toutes les pages */}
       <Navbar />
       <Routes>
         <Route path="/" element={<Home />} />

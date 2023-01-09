@@ -10,11 +10,13 @@ const Logout = () => {
   };
 
   const logout = async () => {
+    // On retire le cookie en back
     await axios({
       method: "get",
       url: `${process.env.REACT_APP_API_URL}api/user/logout`,
       withCredentials: true,
     })
+    // Puis on le retire en front
       .then(() => removeCookie("jwt"))
       .catch((err) => console.log(err));
     

@@ -20,9 +20,11 @@ const SignUpForm = () => {
     );
     const termsError = document.querySelector(".terms.error");
 
+      //  Pour ne pas rester bloqué après une erreur et que le texte ne part pas
     passwordConfirmError.innerHTML = "";
     termsError.innerHTML = "";
 
+    // Mauvais mots de passe ou termes pacheck on ne va pas a la base de données
     if (password !== controlPassword || !terms.checked) {
       if (password !== controlPassword)
         passwordConfirmError.innerHTML =
@@ -55,10 +57,13 @@ const SignUpForm = () => {
   };
 
   return (
+    // On à toujours besoin de balises vide qui englobe tout (on les appelles fragments)
     <>
+    {/* Après une connection réussi */}
       {formSubmit ? (
         <>
           <SignInForm />
+          {/* La balise mettra notre texte sous le bouton "se connecter" */}
           <span></span>
           <h4 className="success">
             Enregistrement réussi, veuillez-vous connecter
