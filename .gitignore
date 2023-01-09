@@ -1,0 +1,5 @@
+# Pour la taille du fichier
+/node_modules
+
+# Pour les données confidentielles
+/config/.env
