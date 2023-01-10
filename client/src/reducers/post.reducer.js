@@ -22,6 +22,7 @@ import {
               likers: [action.payload.userId, ...post.likers],
             };
           }
+          // On revient sur le post apres like
           return post;
         });
       case UNLIKE_POST:

@@ -20,6 +20,7 @@ const LikeButton = ({ post }) => {
     setLiked(false);
   };
 
+  // Contient tous les likes
   useEffect(() => {
     if (post.likers.includes(uid)) setLiked(true);
     else setLiked(false);
@@ -27,6 +28,7 @@ const LikeButton = ({ post }) => {
 
   return (
     <div className="like-container">
+      {/* Pas Connecé */}
       {uid === null && (
         <Popup
           trigger={<img src="./img/icons/heart.svg" alt="like" />}
@@ -36,9 +38,11 @@ const LikeButton = ({ post }) => {
           <div>Connectez-vous pour aimer un post !</div>
         </Popup>
       )}
+      {/* Like */}
       {uid && liked === false && (
         <img src="./img/icons/heart.svg" onClick={like} alt="like" />
       )}
+      {/* Unlike */}
       {uid && liked && (
         <img src="./img/icons/heart-filled.svg" onClick={unlike} alt="unlike" />
       )}
