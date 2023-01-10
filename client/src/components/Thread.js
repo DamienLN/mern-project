@@ -6,13 +6,17 @@ import { isEmpty } from "./Utils";
 
 const Thread = () => {
   const [loadPost, setLoadPost] = useState(true);
+  // Nombre de post qu'il va falloir lire
   const [count, setCount] = useState(5);
   const dispatch = useDispatch();
   const posts = useSelector((state) => state.postReducer);
 
+  //  Avant 1 > c'est la ou on se trouve dans le scroll, et apres c'est la taille complete du scroll
   const loadMore = () => {
     if (window.innerHeight + document.documentElement.scrollTop + 1 > document.scrollingElement.scrollHeight) {
+      // Une fois qu'on touche le bas on charge d'autre post
       setLoadPost(true);
+      
     }
   }
 
@@ -21,6 +25,7 @@ const Thread = () => {
       dispatch(getPosts(count));
     //   false permet de ne pas tourner a l'infini
       setLoadPost(false);
+      // On ajoute 5 post de plus pour le prochain count
       setCount(count + 5);
     }
 
