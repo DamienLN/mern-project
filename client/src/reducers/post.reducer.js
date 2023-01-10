@@ -66,9 +66,11 @@ import {
         });
       case DELETE_COMMENT:
         return state.map((post) => {
+          // On identifie le post
           if (post._id === action.payload.postId) {
             return {
               ...post,
+              // on reidentifie le post a supprimmer 
               comments: post.comments.filter(
                 (comment) => comment._id !== action.payload.commentId
               ),
