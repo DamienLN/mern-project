@@ -101,8 +101,10 @@ const Card = ({ post }) => {
                 title={post._id}
               ></iframe>
             )}
+            {/* Le user peut modifier SON post */}
             {userData._id === post.posterId && (
               <div className="button-container">
+                {/* Bouton modification apparait et disparais */}
                 <div onClick={() => setIsUpdated(!isUpdated)}>
                   <img src="./img/icons/edit.svg" alt="edit" />
                 </div>
