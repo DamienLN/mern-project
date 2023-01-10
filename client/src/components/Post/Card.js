@@ -45,11 +45,13 @@ const Card = ({ post }) => {
                     if (user._id === post.posterId) return user.picture;
                     else return null;
                   })
+                  // enleve les virgules entre chaque elements
                   .join("")
               }
               alt="poster-pic"
             />
           </div>
+          {/* carte post */}
           <div className="card-right">
             <div className="card-header">
               <div className="pseudo">
@@ -62,10 +64,12 @@ const Card = ({ post }) => {
                       })
                       .join("")}
                 </h3>
+                {/* Permet de ne pas s'ajouter sois meme en ami */}
                 {post.posterId !== userData._id && (
                   <FollowHandler idToFollow={post.posterId} type={"card"} />
                 )}
               </div>
+              {/* met la date des post */}
               <span>{dateParser(post.createdAt)}</span>
             </div>
             {isUpdated === false && <p>{post.message}</p>}
@@ -85,6 +89,7 @@ const Card = ({ post }) => {
             {post.picture && (
               <img src={post.picture} alt="card-pic" className="card-pic" />
             )}
+            {/* Vidéo youtube */}
             {post.video && (
               <iframe
                 width="500"
@@ -111,9 +116,11 @@ const Card = ({ post }) => {
                   src="./img/icons/message1.svg"
                   alt="comment"
                 />
+                {/* Savoir le nombre de commentaire */}
                 <span>{post.comments.length}</span>
               </div>
               <LikeButton post={post} />
+              {/* Pour partager le post */}
               <img src="./img/icons/share.svg" alt="share" />
             </div>
             {showComments && <CardComments post={post} />}

@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { followUser, unfollowUser } from "../../actions/user.actions";
 import { isEmpty } from "../Utils";
 
+// le type c'est soit une suggestion ou card on affiche une icône 
 const FollowHandler = ({ idToFollow, type }) => {
   // useSelector nous eprmet d'avoir acces a toutes nos données utilisateur
   const userData = useSelector((state) => state.userReducer);
@@ -27,6 +28,7 @@ const FollowHandler = ({ idToFollow, type }) => {
     }
   }, [userData, idToFollow]);
 
+  // suggestion ou card on affiche une icône 
   return (
     <>
       {isFollowed && !isEmpty(userData) && (
