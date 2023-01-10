@@ -17,6 +17,7 @@ export const dateParser = (num) => {
     return date.toString();
   };
   
+  // Date des post
   export const timestampParser = (num) => {
     let options = {
       hour: "2-digit",
@@ -29,7 +30,7 @@ export const dateParser = (num) => {
     };
   
     let date = new Date(num).toLocaleDateString("fr-FR", options);
-  
+    // En string pour etre sure que ça transit bien
     return date.toString();
   }
   

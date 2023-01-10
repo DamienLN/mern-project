@@ -16,7 +16,9 @@ const CardComments = ({ post }) => {
 
     if (text) {
       dispatch(addComment(post._id, userData._id, text, userData.pseudo))
+      // recupere tous les posts, le store se mettra a jour avvec le dernier commentaire et son id unique
         .then(() => dispatch(getPosts()))
+        // Pour que l'utilisateur puisse remettre un commentaire
         .then(() => setText(''));
     }
   };
@@ -69,6 +71,7 @@ const CardComments = ({ post }) => {
           </div>
         );
       })}
+      {/*  Si connecté */}
       {userData._id && (
         <form action="" onSubmit={handleComment} className="comment-form">
           <input

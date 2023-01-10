@@ -111,6 +111,7 @@ export const addComment = (postId, commenterId, text, commenterPseudo) => {
       data: { commenterId, text, commenterPseudo },
     })
       .then((res) => {
+      // Id unique du post creer par mongo
         dispatch({ type: ADD_COMMENT, payload: { postId } });
       })
       .catch((err) => console.log(err));
