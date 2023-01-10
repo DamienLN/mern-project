@@ -16,6 +16,7 @@ const store = createStore(
   composeWithDevTools(applyMiddleware(thunk))
 );
 
+// Dès qu'on lance l'appli getUsers et getPosts se lancent
 store.dispatch(getUsers());
 store.dispatch(getPosts());
 

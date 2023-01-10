@@ -21,7 +21,9 @@ export const getUser = (uid) => {
 };
 
 export const uploadPicture = (data, id) => {
+  // Envoie au reducer
   return (dispatch) => {
+    // Envoie au Back
     return axios
       .post(`${process.env.REACT_APP_API_URL}api/user/upload`, data)
       .then((res) => {
@@ -30,6 +32,7 @@ export const uploadPicture = (data, id) => {
         } else {
           dispatch({ type: GET_USER_ERRORS, payload: "" });
           return axios
+          // On recupère le chemin de l'img
             .get(`${process.env.REACT_APP_API_URL}api/user/${id}`)
             .then((res) => {
               dispatch({ type: UPLOAD_PICTURE, payload: res.data.picture });
@@ -54,6 +57,7 @@ export const updateBio = (userId, bio) => {
   };
 };
 
+// Fonction follow
 export const followUser = (followerId, idToFollow) => {
   return (dispatch) => {
     return axios({
@@ -68,6 +72,7 @@ export const followUser = (followerId, idToFollow) => {
   };
 };
 
+// Fonction unfollow
 export const unfollowUser = (followerId, idToUnfollow) => {
   return (dispatch) => {
     return axios({

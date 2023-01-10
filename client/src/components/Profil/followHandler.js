@@ -4,15 +4,16 @@ import { followUser, unfollowUser } from "../../actions/user.actions";
 import { isEmpty } from "../Utils";
 
 const FollowHandler = ({ idToFollow, type }) => {
+  // useSelector nous eprmet d'avoir acces a toutes nos données utilisateur
   const userData = useSelector((state) => state.userReducer);
   const [isFollowed, setIsFollowed] = useState(false);
   const dispatch = useDispatch();
-
+  // Prend en charge le follow
   const handleFollow = () => {
     dispatch(followUser(userData._id, idToFollow));
     setIsFollowed(true);
   };
-
+  // Prend en charge l'unfollow
   const handleUnfollow = () => {
     dispatch(unfollowUser(userData._id, idToFollow));
     setIsFollowed(false);

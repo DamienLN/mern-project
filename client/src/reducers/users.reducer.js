@@ -4,6 +4,7 @@ const initialState = {};
 
 export default function usersReducer(state = initialState, action) {
   switch (action.type) {
+    // Cherche les utilisateurs
     case GET_USERS:
       return action.payload;
     default:
